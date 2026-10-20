@@ -159,14 +159,13 @@ void removeFromQueueAndAssign(void) {
     WaitNode *node = waitFront;
     waitFront = node->next;
     if (!waitFront) waitRear = NULL;
-    /* Preserve the original arrival order; the vehicle starts parking now. */
     assignVehicle(node->number, node->owner, node->type);
     free(node);
 }
 
 void vehicleExit(void) {
     char number[REG_LEN];
-    int fee = 30; /* Fixed parking fee; no time-based calculation. */
+    int fee = 30;
     printf("\nVEHICLE EXIT\n");
     line();
     readText("Registration number: ", number, sizeof(number));
